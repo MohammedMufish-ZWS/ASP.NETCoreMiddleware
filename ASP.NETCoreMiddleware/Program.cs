@@ -6,7 +6,7 @@ var app = builder.Build();
 //app.MapDefaultControllerRoute();
 app.Use(async (context, next) =>
 {
-    await context.Response.WriteAsync("Hello World");
+    await context.Response.WriteAsync("Hello World\n");
     await next(context);
 });
 app.Use(async (context, next) =>
