@@ -1,9 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-//app.MapGet("/", () => "Hello World!");
+app.Map("/big", big);
+static void big(IApplicationBuilder app)
+{
+    app.Run(async context =>
+    {
+        await context.Response.WriteAsync("I am a big stepper.");
+    });
+}
 //if u execute above code it will map / route & will give Hello Worl
-//app.MapDefaultControllerRoute();
+//app.MapDefaultControllerRoute(big);
 app.Use(async (context, next) =>
 {
     await context.Response.WriteAsync("Hello World\n");
